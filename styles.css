@@ -11,7 +11,7 @@ header {
     background-size: cover;
     height: 100vh;
     color: white;
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +46,7 @@ nav ul li a {
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 5px rgb(255, 255, 255);
 }
 
 .hero p {
@@ -59,9 +59,16 @@ nav ul li a {
     color: white;
     padding: 15px 30px;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius:0px;
     transition: background-color 0.3s;
+}
+
+.btn-Contact {
+    background-color: green;
+}
+
+.btn-Contact:hover {
+    background-color: aquamarine;
 }
 
 .btn:hover {

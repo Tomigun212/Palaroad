@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; /* Police Arial sans serif */
+            background-image: url('https://i.imgur.com/6tQQ2Pe.jpeg'); /* Remplacer par l'URL de votre image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+        }
+        .btn {
+    background-color: #fefefe;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-Quit {
+    background-color: red;
+}
+
+.btn-Quit:hover {
+    background-color: rgb(17, 104, 135);
+}
+            
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif; 
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+        }
+
+        input,
+        textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Contactez-nous</h1>
+        <form id="contactForm">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" placeholder="Votre nom..." required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="Votre email..." required>
+
+            <label for="message">Message :</label>
+            <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+
+            <input type="submit" value="Envoyer">
+        </form>
+
+        <div class="button-container">
+            <button class="btn btn-Quit" onclick="window.location.href='https://tomigun212.github.io/Palaroad/'"> Retourner a l'acceuil  </button>
+        </div>  
+        <div class="message" id="successMessage">Votre message a été envoyé avec succès !</div>
+        <div class="message" id="errorMessage">Une erreur s'est produite. Veuillez réessayer.</div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const webhookURL = "https://discord.com/api/webhooks/1290036313445236854/g4eDii85Wlg9X6tZLHB6Z0PWKV_DI57sX3wLIkWvWojoeEpBY3n5d1_RPj3hXGSIRA_o";
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const payload = {
+                content: `**Nouveau message de contact [Palaroad] :**\n\n**Nom :** ${name}\n**Email :** ${email}\n**Message :** ${message}`
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('contactForm').reset();
+                } else {
+                    throw new Error('Une erreur est survenue');
+                }
+            })
+            .catch(error => {
+                document.getElementById('errorMessage').style.display = 'block';
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
+
