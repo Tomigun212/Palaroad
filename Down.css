@@ -11,7 +11,7 @@ header {
     background-size: cover;
     height: 100vh;
     color: white;
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,6 +75,15 @@ nav ul li a {
 .btn-Quit:hover {
     background-color: black;
 }
+
+.btn-Journal {
+    background-color: #0cdf08;
+}
+
+.btn-Journal:hover {
+    background-color: black;
+}
+
 
 .btn:hover {
     background-color: #ff8c00;
@@ -159,5 +168,5 @@ nav ul li a {
 footer {
     color: black;
     padding: 20px;
-    text-align: center;
+    text-align: left;
 }
