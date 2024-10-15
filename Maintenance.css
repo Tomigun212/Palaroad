@@ -1,0 +1,49 @@
+/* Styles pour la page */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background-image:url(https://cdnb.artstation.com/p/assets/images/images/058/152/587/large/scott-hammontree-mcmaricopaaz-an-epic-scenic-minecraft-landscape-in-the-style-of-b6685bc2-929d-4543-b901-1f60c198331e.jpg?1673502217) ;
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    margin: 0;
+    height: 100vh;
+    color: white;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+.background-image {
+    width: 100%;
+    height: auto;
+}
+
+.button-container {
+    margin: 20px 0;
+}
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-Quatre {
+    background-color: #007bff;
+}
+
+.btn-Quatre:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    margin-top: 20px;
+}

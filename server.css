@@ -1,0 +1,227 @@
+/* Styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-image: url('https://cdnb.artstation.com/p/assets/images/images/058/152/587/large/scott-hammontree-mcmaricopaaz-an-epic-scenic-minecraft-landscape-in-the-style-of-b6685bc2-929d-4543-b901-1f60c198331e.jpg?1673502217');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.header-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+}
+
+.join-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.join-btn:hover {
+    background-color: #45a049;
+}
+
+.server-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: white;
+}
+
+.info-left {
+    max-width: 500px;
+}
+
+.info-left h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.info-left p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* Styles pour l'IP du serveur avec un look plus élégant */
+.server-ip-wrapper {
+    margin-top: 30px;
+}
+
+.server-ip {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    width: 27%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.server-ip input {
+    flex: 1;
+    padding: 10px;
+    width: 100%;
+    margin-right: 10px;
+    border: none;
+    font-size: 1.1em;
+    background-color: transparent;
+}
+
+.server-ip button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.server-ip button:hover {
+    background-color: #45a049;
+}
+
+.info-right img {
+    width: 400px;
+    border-radius: 10px;
+}
+
+#screenshots {
+    padding: 50px 20px;
+    background-color: #eaeaea;
+    text-align: center;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screenshot-gallery {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; /* 100% * number of images */
+}
+
+.screenshot-gallery img {
+    width: 33.33%; /* 100% / 3 images */
+    flex-shrink: 0;
+    border-radius: 10px;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    z-index: 10;
+    transform: translateY(-50%);
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+/* Section Nous Rejoindre */
+.join-us {
+    padding: 50px 20px;
+    background-color: #4CAF50;
+    text-align: center;
+    color: white;
+}
+
+.join-us h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.join-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.join-link {
+    padding: 15px 30px;
+    background-color: white;
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.join-link:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+.discord-link {
+    background-color: #7289DA;
+    color: white;
+}
+
+.discord-link:hover {
+    background-color: #5a73b5;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2d2d2d;
+    color: white;
+}
+
+

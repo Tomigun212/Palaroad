@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serveur Minecraft - Palaroad</title>
+    <link rel="stylesheet" href="server.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Palaroad Minecraft</h1>
+            <p>Rejoignez l'aventure dès maintenant !</p>
+            <br>
+            <div class="server-ip-wrapper">
+                <center>
+                    <div class="server-ip">
+                        <input type="text" id="serverIP" value="Palaroad.aternos.me" readonly>
+                        <button onclick="copyIP()">Copier l'IP</button>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </header>
+
+    <section class="server-info">
+        <div class="info-left">
+            <h2>À propos de Palaroad</h2>
+            <p>
+                Bienvenue sur Palaroad, un serveur Minecraft dédié aux amateurs de survie et d’aventures.
+                Notre communauté vous offre des événements réguliers, des constructions épiques et un environnement
+                de jeu modéré pour une expérience de jeu fluide. Que vous soyez un explorateur solitaire ou un
+                bâtisseur en équipe, notre serveur est fait pour vous !
+            </p>
+            <p>
+                <strong>Caractéristiques principales :</strong>
+            </p>
+            <ul>
+                <li>Survie modée avec des tonne d'amelioration.</li>
+                <li>Quêtes et événements hebdomadaires.</li>
+                <li>Nouveau Biomes, nouveau minerai ect..</li>
+                <li>Developper tres actif est des mise a jour a intervalle regulier.</li>
+                <li>Discord avec des fonction giveway est les mise a jour prochaine</li>
+            </ul>
+        </div>
+    </section>
+
+<section id="screenshots">
+        <h2>Captures d'écran</h2>
+        <div class="carousel-container">
+            <span class="arrow left-arrow" onclick="prevImage()">&#10094;</span>
+            <div class="screenshot-gallery">
+                <img src="https://minecraft.fr/wp-content/uploads/2022/03/mountain-oh-the-biomes-youll-go-mod-minecraft.jpg" alt="Aperçu 1">
+                <img src="https://i.imgur.com/f25f04S.jpeg" alt="Aperçu 2">
+                <img src="https://i.imgur.com/Fminc2J.png" alt="Aperçu 3">
+                <img src="https://example.com/image4.jpg" alt="Aperçu 4">
+                <img src="https://example.com/image5.jpg" alt="Aperçu 5">
+                <img src="https://example.com/image6.jpg" alt="Aperçu 6">
+            </div>
+            <span class="arrow right-arrow" onclick="nextImage()">&#10095;</span>
+        </div>
+</section>
+
+    <section class="join-us">
+        <h2>Nous Rejoindre</h2>
+        <div class="join-buttons">
+            <a href="https://tomigun212.github.io/Palaroad/contact" class="join-link">Page de Contact</a>
+            <a href="https://discord.gg/uX8dNJV6vX" class="join-link discord-link" target="_blank">Rejoindre le Discord</a>
+        </div>
+    </section>
+
+    <script src="script2.js"></script>
+</body>
+</html>
+
+
+
+
