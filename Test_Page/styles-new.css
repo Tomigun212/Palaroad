@@ -55,12 +55,22 @@ nav ul li a {
 }
 
 .btn {
-    background-color: #ffb100;
+    border: none;
     color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 15px;
     padding: 15px 30px;
-    text-decoration: none;
     border-radius:0px;
     transition: background-color 0.3s;
+}
+
+.btn-journal {
+    background-color: burlywood;
+}
+
+.btn-journal:hover {
+    background-color: rgb(104, 85, 60);
 }
 
 .btn-Contact {
@@ -68,12 +78,25 @@ nav ul li a {
 }
 
 .btn-Contact:hover {
-    background-color: aquamarine;
+    background-color: rgb(17, 86, 17);
 }
 
-.btn:hover {
-    background-color: #ff8c00;
+.btn-server {
+    background-color: rgb(88, 88, 176);
 }
+
+.btn-down {
+    background-color: #ffb100;
+}
+
+.btn-down:hover {
+    background-color:#ff8c00
+}
+
+.btn-server:hover {
+    background-color: rgb(61, 61, 130);
+}
+
 
 #features {
     background-color: white;
@@ -96,7 +119,19 @@ nav ul li a {
     border-radius: 8px;
 }
 
+#server {
+    background-color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
 #screenshots {
+    padding: 50px 20px;
+    background-color: #eaeaea;
+    text-align: center;
+}
+
+#server {
     padding: 50px 20px;
     background-color: #eaeaea;
     text-align: center;
