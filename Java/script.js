@@ -1,29 +1,31 @@
-let currentIndex = 0;
+let currentImageIndex = 0;
 const images = document.querySelectorAll('.screenshot-gallery img');
+const totalImages = images.length;
+const gallery = document.querySelector('.screenshot-gallery');
 
-function showImages() {
-    const gallery = document.querySelector('.screenshot-gallery');
-    const width = images[0].clientWidth; // Largeur d'une image
-    gallery.style.transform = `translateX(${-currentIndex * width}px)`;
-}
-
-function nextImage() {
-    if (currentIndex < images.length - 1) {
-        currentIndex++;
-    } else {
-        currentIndex = 0; // Recommencer au début
-    }
-    showImages();
+function updateCarousel() {
+    const offset = -(currentImageIndex * (100 / 3)); // Calcule l'offset pour faire défiler 3 images
+    gallery.style.transform = `translateX(${offset}%)`; // Applique l'animation avec `translateX`
 }
 
 function prevImage() {
-    if (currentIndex > 0) {
-        currentIndex--;
-    } else {
-        currentIndex = images.length - 1; // Aller à la dernière image
+    currentImageIndex -= 1;
+    if (currentImageIndex < 0) {
+        currentImageIndex = totalImages - 3; // Revient aux 3 dernières images si on est au début
     }
-    showImages();
+    updateCarousel();
 }
 
-window.addEventListener('resize', showImages); // Ajuste la vue lors du redimensionnement de la fenêtre
+function nextImage() {
+    currentImageIndex += 1;
+    if (currentImageIndex > totalImages - 3) {
+        currentImageIndex = 0; // Revient aux 3 premières images si on est à la fin
+    }
+    updateCarousel();
+}
+
+// Affiche les premières images au chargement
+updateCarousel();
+
+
 

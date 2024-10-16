@@ -109,18 +109,22 @@ nav ul li a {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
 
 .screenshot-gallery {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 300%; /* 100% * number of images */
+    width: 300%; 
+    gap: 10px; 
 }
 
 .screenshot-gallery img {
     width: 33.33%; /* 100% / 3 images */
+    width: calc((100% / 3) - 10px); /* Ajuste la largeur pour prendre en compte l'espacement */
     flex-shrink: 0;
     border-radius: 10px;
+    transition: transform 0.5s ease-in-out; /* Ajoute une animation fluide */
 }
 
 .arrow {
