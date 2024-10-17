@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0;url=Maintenance.html">
-    <link href="CSS/Contact.css" rel="stylesheet"
+    <met http-equiv="refresh" content="0;url=Maintenance.html">
+    <link href="CSS/Contact.css" rel="stylesheet">
     <title> Contactez-nous</title>
 </head>
 
@@ -14,26 +14,38 @@
     <div class="container">
         <h1>Contactez-nous</h1>
         <form id="contactForm">
-         <center>   <label for="name">Nom/Pseudo :</label> </center>
+            <center> <label for="name">Nom/Pseudo :</label> </center>
             <input type="text" id="name" name="name" placeholder="Votre nom/Pseudo" required>
 
-          <center>  <label for="email">Email :</label> </center>
+            <center> <label for="email">Email :</label> </center>
             <input type="email" id="email" name="email" placeholder="Votre email..." required>
 
-         <center>   <label for="message">Message :</label> </center>
+            <center> <label for="message">Message :</label> </center>
             <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
 
             <input type="submit" value="Envoyer">
         </form>
 
-        <div class="button-container">
-            <button class="btn btn-Quit" onclick="window.location.href='https://tomigun212.github.io/Palaroad/'"> Retourner a l'acceuil  </button>
-        </div>  
-        <div class="message" id="successMessage">Votre message a été envoyé avec succès !</div>
+        <center>
+            <div class="button-container">
+                <button class="btn btn-Quit" onclick="window.location.href='https://tomigun212.github.io/Palaroad/'">Retourner à l'accueil</button>
+            </div>
+        </center>
+        
+        <div class="message" id="successMessage"></div>
         <div class="message" id="errorMessage">Une erreur s'est produite. Veuillez réessayer.</div>
     </div>
 
-    <p><h6>Sinon, rejoignez-nous sur notre Discord https://discord.gg/2qeqSAsWQh </h6></p>
+    <!-- Popup pour rejoindre Discord -->
+   <center> <div id="discordPopup" class="popup">
+        <div class="popup-content">
+            <span id="closePopupBtn" class="close">&times;</span>
+            <h2>Rejoignez-nous sur Discord</h2>
+            <p>Rejoignez notre communauté et continuez la conversation sur notre serveur Discord !</p>
+            <a href="https://discord.gg/2qeqSAsWQh" target="_blank" class="discord-link">Rejoindre le Discord</a>
+        </center>   </div>
+    </div>
+
     <script>
         document.getElementById('contactForm').addEventListener('submit', function (event) {
             event.preventDefault();
@@ -59,6 +71,7 @@
                 if (response.ok) {
                     document.getElementById('successMessage').style.display = 'block';
                     document.getElementById('contactForm').reset();
+                    ouvrirPopupDiscord(); // Ouvrir le popup Discord après l'envoi
                 } else {
                     throw new Error('Une erreur est survenue');
                 }
@@ -67,10 +80,24 @@
                 document.getElementById('errorMessage').style.display = 'block';
             });
         });
+
+        // Fonction pour ouvrir le popup
+        function ouvrirPopupDiscord() {
+            const popup = document.getElementById('discordPopup');
+            popup.style.display = 'block';
+        }
+
+        // Fonction pour fermer le popup
+        document.getElementById('closePopupBtn').addEventListener('click', function () {
+            document.getElementById('discordPopup').style.display = 'none';
+        });
+
+   
     </script>
 
 </body>
 
 </html>
+
 
 
