@@ -9,6 +9,50 @@ body {
     padding: 0;
 }
 
+.mod-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Carte de mod individuelle */
+.mod-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+}
+
+.mod-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.mod-card h3 {
+    color: #333;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.mod-card .btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mod-card .btn:hover {
+    background-color: #45a049;
+}
+
 header {
     color: white;
     padding: 20px;
