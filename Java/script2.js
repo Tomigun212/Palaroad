@@ -1,10 +1,3 @@
-function copyIP() {
-    var copyText = document.getElementById("serverIP");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(copyText.value);
-    alert("Adresse IP copiée : " + copyText.value);
-}
 
 let currentImageIndex = 0;
 const images = document.querySelectorAll('.screenshot-gallery img');
@@ -34,3 +27,16 @@ function nextImage() {
 
 // Affiche les premières images au chargement
 updateCarousel();
+
+ // Fonction pour agrandir l'image lorsqu'on clique dessus
+ function agrandirImage(img) {
+    var imagePopup = document.getElementById("imagePopup");
+    var imageElement = imagePopup.querySelector("img");
+    imageElement.src = img.src; // Définit l'image à afficher en plein écran
+    imagePopup.style.display = "flex";
+}
+
+// Fonction pour fermer l'image en plein écran
+function fermerImage() {
+    document.getElementById("imagePopup").style.display = "none";
+}

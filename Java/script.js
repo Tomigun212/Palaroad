@@ -27,5 +27,18 @@ function nextImage() {
 // Affiche les premières images au chargement
 updateCarousel();
 
+ // Fonction pour agrandir l'image lorsqu'on clique dessus
+ function agrandirImage(img) {
+    var imagePopup = document.getElementById("imagePopup");
+    var imageElement = imagePopup.querySelector("img");
+    imageElement.src = img.src; // Définit l'image à afficher en plein écran
+    imagePopup.style.display = "flex";
+}
+
+// Fonction pour fermer l'image en plein écran
+function fermerImage() {
+    document.getElementById("imagePopup").style.display = "none";
+}
+
 
 

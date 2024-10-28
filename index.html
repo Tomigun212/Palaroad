@@ -46,24 +46,41 @@
         <div class="carousel-container">
             <span class="arrow left-arrow" onclick="prevImage()">&#10094;</span>
             <div class="screenshot-gallery">
-                <img src="https://minecraft.fr/wp-content/uploads/2022/03/mountain-oh-the-biomes-youll-go-mod-minecraft.jpg" alt="Aperçu 1">
-                <img src="https://i.imgur.com/f25f04S.jpeg" alt="Aperçu 2">
-                <img src="https://i.imgur.com/Fminc2J.png" alt="Aperçu 3">
-                <img src="https://i.imgur.com/9rMB7ay.jpeg" alt="Aperçu 4">
-                <img src="https://i.imgur.com/e7wTeRS.png" alt="Aperçu 5">
-                <img src="https://i.imgur.com/TMRUPbD.jpeg" alt="Aperçu 6">
+                <!-- Images cliquables pour agrandissement -->
+                <img src="https://minecraft.fr/wp-content/uploads/2022/03/mountain-oh-the-biomes-youll-go-mod-minecraft.jpg" alt="Aperçu 1" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/f25f04S.jpeg" alt="Aperçu 2" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/Fminc2J.png" alt="Aperçu 3" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/9rMB7ay.jpeg" alt="Aperçu 4" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/e7wTeRS.png" alt="Aperçu 5" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/TMRUPbD.jpeg" alt="Aperçu 6" onclick="agrandirImage(this)">
             </div>
             <span class="arrow right-arrow" onclick="nextImage()">&#10095;</span>
         </div>
     </section>
 
+    <div id="imagePopup" class="image-popup" onclick="fermerImage()">
+        <img src="" alt="Image agrandie">
+    </div>
+
+    <section id="Server">
+        <h2> jouer avec ses amis</h2>
+        <br>
+        <br>
+        <div class="button-container">
+            <button class="btn btn-amis" onclick="window.location.href='https://tomigun212.github.io/Palaroad/server'"> Jouer Maintenant  </button>
+        </div> 
+
+
+
+    </section>
+
     <section id="Maj">
         <h2> <center>Derniere mise a jour ModPack </center> </h2> 
-    <center>  Derniere Maj : Fin de la maintenance Retablissement de tout le site plus publication de la version 1.18.2 du modpack 18/10/2024 </center>
+    <center>  Derniere Maj : Ajout de la fonction jouer avec ses amis grace a la section Server Ajout d'agrandissement image quand elle est cliquer </center>
     <br>
-    <div class="button-container">
+  <center> <div class="button-container">
         <button class="btn btn-journal" onclick="window.location.href='https://tomigun212.github.io/Palaroad/Journal-Modif'"> Acceder au journal des modification  </button>
-    </div> 
+    </center>   </div> 
     </section>
     <footer>
 

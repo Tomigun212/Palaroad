@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0;url=Maintenance.html">
-    <title>Serveur Minecraft - Palaroad</title>
+    <met http-equiv="refresh" content="0;url=Maintenance.html">
+    <title>Multijoueur Minecraft - Palaroad</title>
     <link rel="stylesheet" href="CSS/server.css">
 </head>
 <body>
     <header>
         <div class="header-content">
             <h1>Palaroad Minecraft</h1>
-            <p>Rejoignez l'aventure dès maintenant !</p>
+            <p>Jouer avec ses amis c'est possible avec notre modpack</p>
             <br>
-            <div class="server-ip-wrapper">
-                <center>
-                    <div class="server-ip">
-                        <input type="text" id="serverIP" value="Palaroad.aternos.me" readonly>
-                        <button onclick="copyIP()">Copier l'IP</button>
-                    </div>
-                </center>
+            <p>Grace au mod Essential disponible dans de multiple version</p>
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-down" onclick="window.location.href='https://essential.gg/'"> Telecharger Essential  </button>
+            <br>
             </div>
         </div>
     </header>
@@ -28,7 +27,7 @@
         <div class="info-left">
             <h2>À propos de Palaroad</h2>
             <p>
-                Bienvenue sur Palaroad, un serveur Minecraft dédié aux amateurs de survie et d’aventures.
+                Bienvenue sur Palaroad, un ModPack Minecraft dédié aux amateurs de survie et d’aventures.
                 Notre communauté vous offre des événements réguliers, des constructions épiques et un environnement
                 de jeu modéré pour une expérience de jeu fluide. Que vous soyez un explorateur solitaire ou un
                 bâtisseur en équipe, notre serveur est fait pour vous !
@@ -40,28 +39,32 @@
                 <li>Survie modée avec des tonne d'amelioration.</li>
                 <li>Quêtes et événements hebdomadaires.</li>
                 <li>Nouveau Biomes, nouveau minerai ect..</li>
-                <li>Developper tres actif est des mise a jour a intervalle regulier.</li>
+                <li>Developpeur tres actif est des mise a jour a intervalle regulier.</li>
                 <li>Discord avec des fonction giveway est les mise a jour prochaine</li>
             </ul>
         </div>
     </section>
 
-<section id="screenshots">
+    <section id="screenshots">
         <h2>Captures d'écran</h2>
-        <br>
         <div class="carousel-container">
             <span class="arrow left-arrow" onclick="prevImage()">&#10094;</span>
             <div class="screenshot-gallery">
-                <img src="https://minecraft.fr/wp-content/uploads/2022/03/mountain-oh-the-biomes-youll-go-mod-minecraft.jpg" alt="Aperçu 1">
-                <img src="https://i.imgur.com/f25f04S.jpeg" alt="Aperçu 2">
-                <img src="https://i.imgur.com/Fminc2J.png" alt="Aperçu 3">
-                <img src="https://i.imgur.com/9rMB7ay.jpeg" alt="Aperçu 4">
-                <img src="https://i.imgur.com/e7wTeRS.png" alt="Aperçu 5">
-                <img src="https://i.imgur.com/TMRUPbD.jpeg" alt="Aperçu 6">
+                <!-- Images cliquables pour agrandissement -->
+                <img src="https://minecraft.fr/wp-content/uploads/2022/03/mountain-oh-the-biomes-youll-go-mod-minecraft.jpg" alt="Aperçu 1" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/f25f04S.jpeg" alt="Aperçu 2" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/Fminc2J.png" alt="Aperçu 3" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/9rMB7ay.jpeg" alt="Aperçu 4" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/e7wTeRS.png" alt="Aperçu 5" onclick="agrandirImage(this)">
+                <img src="https://i.imgur.com/TMRUPbD.jpeg" alt="Aperçu 6" onclick="agrandirImage(this)">
             </div>
             <span class="arrow right-arrow" onclick="nextImage()">&#10095;</span>
         </div>
-</section>
+    </section>
+
+    <div id="imagePopup" class="image-popup" onclick="fermerImage()">
+        <img src="" alt="Image agrandie">
+    </div>
 
     <section class="join-us">
         <h2>Nous Rejoindre</h2>
