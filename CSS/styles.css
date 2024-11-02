@@ -209,11 +209,53 @@ nav ul li a {
     text-align: left;
 }
 
+.join-us {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: white;
+    color: black ;
+}
+
+.join-us h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
 #Server {
     background-color: #bac7c86f;
     color: rgb(0, 0, 0);
     padding: 50px 20px;
     text-align: center;
+}
+
+.join-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.join-link {
+    padding: 15px 30px;
+    background-color: #45a049;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.join-link:hover {
+    background-color: #327434;
+}
+
+.discord-link {
+    background-color: #7289DA;
+    color: white;
+}
+
+.discord-link:hover {
+    background-color: #5a73b5;
 }
 
 footer {

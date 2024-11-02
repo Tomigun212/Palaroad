@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commentaires et Notation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            font-size: 2em;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        /* Bouton marteau de modération */
+        .moderator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+        .moderator img {
+            width: 40px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .moderator img:hover {
+            opacity: 1;
+        }
+
+        /* Formulaire de commentaire */
+        #ratingForm {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        #ratingForm input[type="text"],
+        #ratingForm textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #e9eef5;
+            outline: none;
+            font-size: 1em;
+            color: #333;
+        }
+        #ratingForm button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #ratingForm button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style de notation d'étoiles */
+        .star-rating {
+            display: inline-flex;
+            font-size: 30px;
+            gap: 5px;
+        }
+        .star-rating .star {
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+        }
+        .star-rating .star.filled {
+            color: #ffcc00;
+        }
+        .rating-score {
+            font-size: 1.2em;
+            margin-left: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Commentaires */
+        .comment-section {
+            width: 100%;
+            max-width: 600px;
+        }
+        .comment {
+            background: #007bff;
+            color: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .comment strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #ffdd57;
+        }
+        .comment p {
+            margin: 5px 0;
+        }
+
+        /* Bouton supprimer en bulle */
+        .delete-btn {
+            background-color: #ff5555;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            border-radius: 20px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: none;
+        }
+        .comment.moderated .delete-btn {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Commentaires et Notation</h1>
+
+    <!-- Bouton marteau de modération en haut à droite -->
+    <div class="moderator" title="Cliquez pour activer le mode modérateur">
+        <img src="https://img.icons8.com/ios-filled/50/000000/hammer.png" alt="Modération">
+    </div>
+
+    <div id="ratingForm">
+        <h2>Laisser un commentaire</h2>
+        <input type="text" id="username" placeholder="Votre nom" required>
+        
+        <textarea id="comment" rows="3" placeholder="Écrivez votre commentaire..." required></textarea>
+        
+        <div class="star-rating" id="starRating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+            <span class="rating-score" id="ratingScore">0/5</span>
+        </div>
+
+        <button onclick="addComment()">Publier le commentaire</button>
+    </div>
+
+    <div class="comment-section" id="commentsSection">
+        <h2>Commentaires</h2>
+        <!-- Les commentaires seront ajoutés ici dynamiquement -->
+    </div>
+
+    <script>
+        let isModerator = false;
+        let rating = 0;
+
+        // Activer la modération
+        document.querySelector('.moderator').addEventListener('click', () => {
+            const password = prompt("Veuillez entrer le mot de passe pour la modération :");
+            if (password === "votre_mot_de_passe") {
+                isModerator = true;
+                alert("Vous êtes maintenant en mode modérateur.");
+                document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'inline');
+            } else {
+                alert("Mot de passe incorrect.");
+            }
+        });
+
+        // Fonction pour gérer la notation en étoiles entières
+        document.querySelectorAll('.star-rating .star').forEach(star => {
+            star.addEventListener('click', function () {
+                rating = parseInt(star.getAttribute('data-value'));
+                updateStars();
+                document.getElementById('ratingScore').textContent = `${rating}/5`;
+            });
+        });
+
+        // Mettre à jour l'affichage des étoiles
+        function updateStars() {
+            document.querySelectorAll('.star-rating .star').forEach(star => {
+                star.classList.remove('filled');
+                if (parseInt(star.getAttribute('data-value')) <= rating) {
+                    star.classList.add('filled');
+                }
+            });
+        }
+
+        // Ajouter un commentaire
+        function addComment() {
+            const username = document.getElementById('username').value;
+            const commentText = document.getElementById('comment').value;
+
+            if (username && commentText && rating) {
+                const commentSection = document.getElementById('commentsSection');
+
+                // Créer un nouvel élément de commentaire
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                
+                const name = document.createElement('strong');
+                name.textContent = username;
+                commentDiv.appendChild(name);
+                
+                const ratingText = document.createElement('p');
+                ratingText.innerHTML = "Note : " + "★".repeat(rating) + " (" + rating + "/5)";
+                commentDiv.appendChild(ratingText);
+
+                const commentContent = document.createElement('p');
+                commentContent.textContent = commentText;
+                commentDiv.appendChild(commentContent);
+
+                // Bouton supprimer visible en mode modérateur
+                const deleteBtn = document.createElement('span');
+                deleteBtn.textContent = "Supprimer";
+                deleteBtn.classList.add('delete-btn');
+                deleteBtn.onclick = () => commentDiv.remove();
+                if (isModerator) deleteBtn.style.display = 'inline';
+                
+                commentDiv.appendChild(deleteBtn);
+                commentSection.appendChild(commentDiv);
+
+                // Réinitialiser le formulaire
+                document.getElementById('username').value = '';
+                document.getElementById('comment').value = '';
+                rating = 0;
+                updateStars();
+                document.getElementById('ratingScore').textContent = "0/5";
+            } else {
+                alert("Veuillez remplir tous les champs et noter le jeu.");
+            }
+        }
+    </script>
+</body>
+</html>
+
+
