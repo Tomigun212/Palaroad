@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=Maintenance.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commentaires et Notation</title>
     <style>
@@ -19,8 +20,8 @@
             color: #444;
             margin-bottom: 20px;
         }
+        
 
-        /* Bouton marteau de modération */
         .moderator {
             position: fixed;
             top: 20px;
@@ -35,8 +36,8 @@
         .moderator img:hover {
             opacity: 1;
         }
-
-        /* Formulaire de commentaire */
+        
+   
         #ratingForm {
             background: #fff;
             padding: 20px;
@@ -72,28 +73,36 @@
             background-color: #0056b3;
         }
 
-        /* Style de notation d'étoiles */
+
         .star-rating {
-            display: inline-flex;
-            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 5px;
+            margin-bottom: 10px;
         }
-        .star-rating .star {
-            cursor: pointer;
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 24px;
             color: #ddd;
+            cursor: pointer;
             transition: color 0.2s;
         }
-        .star-rating .star.filled {
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
             color: #ffcc00;
         }
-        .rating-score {
-            font-size: 1.2em;
-            margin-left: 10px;
-            font-weight: bold;
+        .star-rating input:checked + label ~ .rating-score {
             color: #333;
+            font-size: 1.2em;
+            margin-left: 8px;
+            font-weight: bold;
         }
 
-        /* Commentaires */
+  
         .comment-section {
             width: 100%;
             max-width: 600px;
@@ -106,6 +115,16 @@
             position: relative;
             margin-bottom: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s;
+        }
+        .comment:before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: #007bff transparent transparent transparent;
         }
         .comment strong {
             display: block;
@@ -117,7 +136,7 @@
             margin: 5px 0;
         }
 
-        /* Bouton supprimer en bulle */
+
         .delete-btn {
             background-color: #ff5555;
             color: #fff;
@@ -133,13 +152,18 @@
         .comment.moderated .delete-btn {
             display: inline;
         }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
     <h1>Commentaires et Notation</h1>
 
-    <!-- Bouton marteau de modération en haut à droite -->
     <div class="moderator" title="Cliquez pour activer le mode modérateur">
         <img src="https://img.icons8.com/ios-filled/50/000000/hammer.png" alt="Modération">
     </div>
@@ -150,31 +174,27 @@
         
         <textarea id="comment" rows="3" placeholder="Écrivez votre commentaire..." required></textarea>
         
-        <div class="star-rating" id="starRating">
-            <span class="star" data-value="1">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="5">★</span>
-            <span class="rating-score" id="ratingScore">0/5</span>
+        <div class="star-rating">
+            <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+            <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+            <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+            <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+            <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
         </div>
 
-        <button onclick="addComment()">Publier le commentaire</button>
+      <center> <button onclick="addComment()">Publier le commentaire</button> </center>
     </div>
 
     <div class="comment-section" id="commentsSection">
-        <h2>Commentaires</h2>
-        <!-- Les commentaires seront ajoutés ici dynamiquement -->
+        <h2>Commentaires : </h2>
     </div>
 
     <script>
         let isModerator = false;
-        let rating = 0;
 
-        // Activer la modération
         document.querySelector('.moderator').addEventListener('click', () => {
             const password = prompt("Veuillez entrer le mot de passe pour la modération :");
-            if (password === "votre_mot_de_passe") {
+            if (password === "TestEki") {
                 isModerator = true;
                 alert("Vous êtes maintenant en mode modérateur.");
                 document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'inline');
@@ -183,69 +203,80 @@
             }
         });
 
-        // Fonction pour gérer la notation en étoiles entières
-        document.querySelectorAll('.star-rating .star').forEach(star => {
-            star.addEventListener('click', function () {
-                rating = parseInt(star.getAttribute('data-value'));
-                updateStars();
-                document.getElementById('ratingScore').textContent = `${rating}/5`;
-            });
-        });
+        function loadComments() {
+            const comments = JSON.parse(localStorage.getItem('comments')) || [];
+            const currentTime = Date.now();
+            comments.forEach((comment, index) => {
 
-        // Mettre à jour l'affichage des étoiles
-        function updateStars() {
-            document.querySelectorAll('.star-rating .star').forEach(star => {
-                star.classList.remove('filled');
-                if (parseInt(star.getAttribute('data-value')) <= rating) {
-                    star.classList.add('filled');
+                if (currentTime - comment.timestamp < 7 * 24 * 60 * 60 * 1000) {
+                    displayComment(comment, index);
+                } else {
+                    comments.splice(index, 1);
                 }
             });
+            localStorage.setItem('comments', JSON.stringify(comments));
         }
 
-        // Ajouter un commentaire
         function addComment() {
             const username = document.getElementById('username').value;
             const commentText = document.getElementById('comment').value;
+            const rating = document.querySelector('input[name="rating"]:checked').value;
 
             if (username && commentText && rating) {
-                const commentSection = document.getElementById('commentsSection');
-
-                // Créer un nouvel élément de commentaire
-                const commentDiv = document.createElement('div');
-                commentDiv.classList.add('comment');
+                const comment = {
+                    username: username,
+                    commentText: commentText,
+                    rating: rating,
+                    timestamp: Date.now()
+                };
                 
-                const name = document.createElement('strong');
-                name.textContent = username;
-                commentDiv.appendChild(name);
-                
-                const ratingText = document.createElement('p');
-                ratingText.innerHTML = "Note : " + "★".repeat(rating) + " (" + rating + "/5)";
-                commentDiv.appendChild(ratingText);
+                const comments = JSON.parse(localStorage.getItem('comments')) || [];
+                comments.push(comment);
+                localStorage.setItem('comments', JSON.stringify(comments));
 
-                const commentContent = document.createElement('p');
-                commentContent.textContent = commentText;
-                commentDiv.appendChild(commentContent);
+                displayComment(comment, comments.length - 1);
 
-                // Bouton supprimer visible en mode modérateur
-                const deleteBtn = document.createElement('span');
-                deleteBtn.textContent = "Supprimer";
-                deleteBtn.classList.add('delete-btn');
-                deleteBtn.onclick = () => commentDiv.remove();
-                if (isModerator) deleteBtn.style.display = 'inline';
-                
-                commentDiv.appendChild(deleteBtn);
-                commentSection.appendChild(commentDiv);
-
-                // Réinitialiser le formulaire
                 document.getElementById('username').value = '';
                 document.getElementById('comment').value = '';
-                rating = 0;
-                updateStars();
-                document.getElementById('ratingScore').textContent = "0/5";
+                document.querySelector('input[name="rating"]:checked').checked = false;
             } else {
                 alert("Veuillez remplir tous les champs et noter le jeu.");
             }
         }
+
+        function displayComment(comment, index) {
+            const commentSection = document.getElementById('commentsSection');
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            
+            const name = document.createElement('strong');
+            name.textContent = comment.username;
+            commentDiv.appendChild(name);
+            
+            const ratingText = document.createElement('p');
+            ratingText.innerHTML = "Note : " + "★".repeat(Math.floor(comment.rating)) + (comment.rating % 1 ? "☆" : "") + " (" + comment.rating + "/5)";
+            commentDiv.appendChild(ratingText);
+
+            const commentContent = document.createElement('p');
+            commentContent.textContent = comment.commentText;
+            commentDiv.appendChild(commentContent);
+
+            const deleteBtn = document.createElement('span');
+            deleteBtn.textContent = "Supprimer";
+            deleteBtn.classList.add('delete-btn');
+            deleteBtn.onclick = () => {
+                const comments = JSON.parse(localStorage.getItem('comments'));
+                comments.splice(index, 1);
+                localStorage.setItem('comments', JSON.stringify(comments));
+                commentDiv.remove();
+            };
+            if (isModerator) deleteBtn.style.display = 'inline';
+            commentDiv.appendChild(deleteBtn);
+
+            commentSection.appendChild(commentDiv);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComments);
     </script>
 </body>
 </html>
