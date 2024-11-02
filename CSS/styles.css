@@ -235,7 +235,7 @@ nav ul li a {
     gap: 20px;
 }
 
-.join-link {
+.btn-link {
     padding: 15px 30px;
     background-color: #45a049;
     color: black;
@@ -245,21 +245,29 @@ nav ul li a {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.join-link:hover {
+.btn-link:hover {
     background-color: #327434;
 }
 
-.discord-link {
+.btn-linkdisc {
     background-color: #7289DA;
-    color: white;
+    color: #ffffff;
 }
 
-.discord-link:hover {
+.btn-link:hover {
     background-color: #5a73b5;
 }
 
+.btn-Com {
+    background-color: gray;
+}
+
+.btn-com:hover{
+    background-color: rgb(68, 68, 68);
+}
+
 footer {
-    color: black;
+    color: white;
     padding: 20px;
     text-align: center;
 }

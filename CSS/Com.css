@@ -41,6 +41,7 @@ h1 {
 }
 #ratingForm input[type="text"],
 #ratingForm textarea {
+    font-family: Arial, sans-serif;
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 10px;
@@ -100,8 +101,9 @@ h1 {
     max-width: 600px;
 }
 .comment {
-    background: #007bff;
-    color: #fff;
+    background: #ffffff;
+    border: #000000;
+    color: #000000;
     padding: 15px;
     border-radius: 15px;
     position: relative;
@@ -116,13 +118,13 @@ h1 {
     left: 20px;
     border-width: 10px;
     border-style: solid;
-    border-color: #007bff transparent transparent transparent;
+    border-color: #ffffff transparent transparent transparent;
 }
 .comment strong {
     display: block;
     font-size: 1.1em;
     margin-bottom: 5px;
-    color: #ffdd57;
+    color: #000000;
 }
 .comment p {
     margin: 5px 0;
@@ -149,4 +151,11 @@ h1 {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+footer {
+    font-family: Arial, sans-serif;
+    color: #000000;
+    text-align: right;
+    
 }
