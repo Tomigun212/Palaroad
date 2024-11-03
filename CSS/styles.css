@@ -116,6 +116,7 @@ nav ul li a {
 
 .btn-journal {
     background-color: rgb(91, 46, 46);
+    border-radius: 7px;
 }
 
 .btn-journal:hover {
@@ -241,7 +242,7 @@ nav ul li a {
     color: black;
     text-decoration: none;
     font-size: 1.2em;
-    border-radius: 5px;
+    border-radius: 7px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -252,17 +253,19 @@ nav ul li a {
 .btn-linkdisc {
     background-color: #7289DA;
     color: #ffffff;
+    border-radius: 7px;
 }
 
-.btn-link:hover {
-    background-color: #5a73b5;
+.btn-linkdisc:hover {
+    background-color: #364671;
 }
 
 .btn-Com {
     background-color: gray;
+    border-radius: 7px;
 }
 
-.btn-com:hover{
+.btn-Com:hover{
     background-color: rgb(68, 68, 68);
 }
 
