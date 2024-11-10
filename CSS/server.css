@@ -232,7 +232,7 @@ ul {
     gap: 20px;
 }
 
-.join-link {
+.btn-join {
     padding: 15px 30px;
     background-color: #45a049;
     color: black;
@@ -242,17 +242,26 @@ ul {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.join-link:hover {
+.btn-join:hover {
     background-color: #327434;
 }
 
-.discord-link {
+.btn-link {
     background-color: #7289DA;
     color: white;
+    border-radius: 5px;
 }
 
-.discord-link:hover {
+.btn-link:hover {
     background-color: #5a73b5;
+}
+.btn-Quit {
+    background-color: red;
+    border-radius: 5px;
+}
+
+.btn-Quit:hover {
+    background-color: rgb(133, 2, 2);
 }
 
 footer {
